@@ -1,0 +1,114 @@
+:root {
+  font-size: 50px;
+
+  --color-bg: #47289d;
+  --color-text: #00e1ff;
+
+  --font-size: 1rem;
+
+  --font-size-xxs: calc(0.5 * var(--font-size));
+  --font-size-xs: calc(0.8 * var(--font-size));
+  --font-size-s: calc(1.1 * var(--font-size));
+  --font-size-m: calc(1.4 * var(--font-size));
+  --font-size-l: calc(1.7 * var(--font-size));
+  --font-size-xl: calc(2 * var(--font-size));
+  --font-size-xxl: calc(2.3 * var(--font-size));
+
+  --letter-spacing: 0.1rem;
+}
+
+.txt-size-xxs {
+  font-size: var(--font-size-xxs);
+}
+.txt-size-xs {
+  font-size: var(--font-size-xs);
+}
+.txt-size-s {
+  font-size: var(--font-size-s);
+}
+.txt-size-m {
+  font-size: var(--font-size-m);
+}
+.txt-size-l {
+  font-size: var(--font-size-l);
+}
+.txt-size-xl {
+  font-size: var(--font-size-xl);
+}
+.txt-size-xxl {
+  font-size: var(--font-size-xxl);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-bg);
+}
+
+h1 {
+  /* font-size: 70px; */
+  /* font-size: var(--font-size-xxl); */
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: var(--letter-spacing);
+  color: transparent;
+  -webkit-text-stroke: 1px #8a8a8a60;
+  position: relative;
+  transition-delay: 0.4s;
+  transition: 0.4s;
+  /* text-transform: uppercase; */
+
+  &::before {
+    content: attr(data-foo);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    overflow: hidden;
+    font-size: 70px;
+    /* font-size: var(--font-size-xxl); */
+    color: var(--color-text);
+    text-shadow: 0 0 5px var(--color-text), 0 0 5px var(--color-text);
+    transition: 0.6s;
+    filter: drop-shadow(0 0 10px var(--color-text));
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2%;
+    width: 1%;
+    height: 100%;
+    background-color: var(--color-text);
+    transition: 0.6s;
+    /* animation: blink-caret 1.2s ease-in-out infinite; */
+    animation: blink-caret 0.6s step-end infinite;
+    box-shadow: 0 0 10px var(--color-text);
+    border-radius: 5px;
+  }
+
+  &:hover::after {
+    left: 102%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    background-color: transparent;
+    box-shadow: 0 0 0px;
+  }
+  50% {
+    background-color: var(--color-text);
+    box-shadow: 0 0 10px var(--color-text);
+  }
+}
